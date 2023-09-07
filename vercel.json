@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/blog",
+            "destination": "https://acme.com/blog"
+        },
+        {
+            "source": "/ingest/:match*",
+            "destination": "https://app.posthog.com/:match*"
+        }
+    ]
+  }
