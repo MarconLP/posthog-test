@@ -1,11 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import { api } from "~/utils/api";
-
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -43,9 +39,12 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello.data ? hello.data.greeting : "Loading tRPC query..."}
-            </p>
+            <button
+              className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+              onClick={() => posthog.capture("test-event")}
+            >
+              capture test event
+            </button>
           </div>
         </div>
       </main>
