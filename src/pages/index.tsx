@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
+import { type PostHog } from "posthog-js";
+declare const posthog: PostHog;
 
 export default function Home() {
   return (
