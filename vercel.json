@@ -5,8 +5,8 @@
             "destination": "https://acme.com/blog"
         },
         {
-            "source": "/ingest/:match*",
-            "destination": "https://app.posthog.com/:match*"
-        }
+            "source": "/ingest/:path*",
+            "destination": "https://app.posthog.com/:path*"
+          }
     ]
   }
