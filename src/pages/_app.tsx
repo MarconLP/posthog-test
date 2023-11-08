@@ -1,6 +1,10 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
+import { useRouter } from "next/router"
+import { useEffect } from "react"
+import { type PostHog } from "posthog-js";
+declare const posthog: PostHog;
 
 import { api } from "~/utils/api";
 
@@ -11,6 +15,17 @@ const MyApp: AppType<{ session: Session | null }> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const router = useRouter()
+  useEffect(() => {
+    // Track page views
+    const handleRouteChange = () => posthog.capture('$pageview')
+    router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [])
+
   return (
     <SessionProvider session={session}>
       <script
