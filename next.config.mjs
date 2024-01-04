@@ -17,6 +17,14 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  async rewrites() {
+    return [
+      {
+        source: "/ingest/:path*",
+        destination: "https://app.posthog.com/:path*",
+      },
+    ];
+  },
 };
 
 export default config;
