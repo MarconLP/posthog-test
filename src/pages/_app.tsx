@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import { useEffect } from "react"
 import { type PostHog } from "posthog-js";
 declare const posthog: PostHog;
+import "vercel-toast/css";
 
 import { api } from "~/utils/api";
 

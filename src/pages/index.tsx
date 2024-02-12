@@ -2,8 +2,17 @@ import Head from "next/head";
 import Link from "next/link";
 import { type PostHog } from "posthog-js";
 declare const posthog: PostHog;
+import { createToast } from "vercel-toast";
 
 export default function Home() {
+
+  const captureTestEvent = () => {
+    posthog.capture("test-event")
+    createToast("posthog.capture('test-event')", {
+      timeout: 3000
+    });
+  }
+
   return (
     <>
       <Head>
@@ -41,7 +50,7 @@ export default function Home() {
           <div className="flex flex-col items-center gap-2">
             <button
               className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-              onClick={() => posthog.capture("test-event")}
+              onClick={captureTestEvent}
             >
               capture test event
             </button>
