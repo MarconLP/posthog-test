@@ -23,6 +23,10 @@ const config = {
         source: "/ingest/:path*",
         destination: "https://app.posthog.com/:path*",
       },
+      {
+        source: "/test/:path*",
+        destination: "https://webhook.site/2c6476f8-4030-4a96-b389-7489cc2c43da/:path*",
+      },
     ];
   },
 };
